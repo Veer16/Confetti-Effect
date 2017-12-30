@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Comment</title>
+
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 10px;
+        }
+
+        body {
+            display: table;
+            margin: 0 auto;
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-weight: 300;
+            color: #575757;
+            line-height: 1.3em;
+        }
+
+        .submit, textarea, input {
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        textarea {
+            border-radius: 5px;
+            border-color: #777777;
+            outline: none;
+        }
+
+        .container {
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .cent {
+            height: 450px;
+            width: 280px;
+
+        }
+
+        .centered {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 22px;
+            margin-bottom: 20px;
+            line-height: 1.24em;
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-weight: 300;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        label {
+
+            margin: 20px 0;
+            display: block;
+        }
+
+        a, a:visited, a:active {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: silver;
+            text-decoration: none;
+            border-bottom: 1px silver solid;
+        }
+
+        img[class=logo] {
+            height: auto !important;
+            max-width: 250px !important;
+        }
+
+        /*iPhone Media Query*/
+        @media only screen and (max-width: 480px) {
+            img[class=logo] {
+                height: auto !important;
+                max-width: 250px !important;
+            }
+        }
+
+        /*Buttons*/
+        .action-button {
+            padding: 8px 40px 10px 40px;
+            margin-top: 10px;
+            border-radius: 10px;
+            font-size: 18px;
+            color: #ffffff;
+            text-decoration: none;
+            border: 0;
+            width: 100%;
+            outline: none;
+            background-color: #999999;
+
+        }
+
+        input[type="submit"]:hover {
+            color: #ffffff;
+        }
+
+        .chevron::before {
+            border-style: solid;
+            border-width: 0.25em 0.25em 0 0;
+            content: '';
+            display: inline-block;
+            height: 0.45em;
+            left: 0.15em;
+            position: relative;
+            top: 0.15em;
+            transform: rotate(-45deg);
+            vertical-align: top;
+            width: 0.45em;
+        }
+
+        .chevron.right:before {
+            left: 0;
+            transform: rotate(45deg);
+        }
+
+        select {
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50px' height='50px'><polyline points='46.139,15.518 25.166,36.49 4.193,15.519' style='fill:none;stroke:#333;stroke-width:4' /></svg>");
+            background-color: #eeeeee;
+            background-repeat: no-repeat;
+            background-position: right 6px top 6px;
+            background-size: 10px 10px;
+            padding: 2px 18px 2px 6px;
+            margin-bottom: -5px;
+            width: auto;
+            min-width: 35px;
+            font-size: 0.8em;
+            color: #575757;
+            text-align: center;
+            text-align-last: center;
+            border-radius: 3px;
+            -webkit-border-radius: 3px;
+            -webkit-appearance: none;
+            border: 0;
+            outline: 0;
+            -webkit-transition: 0.3s ease all;
+            -moz-transition: 0.3s ease all;
+            -ms-transition: 0.3s ease all;
+            -o-transition: 0.3s ease all;
+            transition: 0.3s ease all;
+        }
+    </style>
+
+    <style>
+    /*#dummy :hover{
+      background-color: #3677d3;
+    }*/
+    #save:hover {
+     background-color:#ff0059;
+   }
+
+        a, a:visited, a:active {
+          color: #ff0059;
+          border-bottom: 1px #ff0059 dotted;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<!-- <img src="/img/logo.png" /> -->
+
+<div class="container">
+    <div class="cent">
+        <!-- <div><img class="logo centered" src="/img/logo.png" ></div> -->
+        <div style="margin-bottom: 0px;">
+           <h1>                                               Why did you give TaurusRocks a ?
+                       </h1>
+        </div>
+        <form style="margin-top:20px" method="POST" id="leave_comment_form" action="ConfettiEffect.html">
+            <input type="hidden" name="answer" value="10">
+            <textarea id="comment" name="comment" style="width:95%;height:90px;margin:0;padding:5px"></textarea>
+<span id="dummy">
+  <input type="submit" id="save" class="action-button button-color" value="Finish"
+ onClick="this.form.submit(); this.disabled=true;"
+ />
+</span>
+
+
+    </form>
+
+    </div>
+</div>
+
+
+<script>
+var add = "https://taurusrocks.asknice.ly/email/a/390b3c2e25/8/v2/confirm"
+var url = add.split('/')[1];
+
+    score_dropdown.addEventListener(
+            'change',
+            function () {
+                var new_score_value = score_dropdown.options[score_dropdown.selectedIndex].value;
+                var slug = '4165dafef3';
+                var new_url = '/email/a/' + slug + '/' + new_score_value + '/v2/confirm';
+
+                var comment_form = document.getElementById('leave_comment_form');
+                var comment_field = document.getElementById('comment');
+
+                if (comment_field.value === '') {
+                    document.location = new_url;
+                } else {
+                    if (!document.getElementById('new_score')) {
+                        var input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.id = 'new_score';
+                        input.name = 'new_score';
+                        input.value = new_score_value;
+                        comment_form.appendChild(input);
+                    } else {
+                        var new_score_element = document.getElementById('new_score');
+                        new_score_element.value = new_score_value;
+                    }
+                }
+            },
+            false
+            );
+
+</script>
+
+
+
+</body>
+</html>

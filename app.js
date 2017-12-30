@@ -17,7 +17,7 @@
     // objects
 
     var particleColors = {
-        colorOptions: ["#e06437", "#61b359", "#8d5198", "#f6c746"],
+        colorOptions: ["#e06437", "#69b761", "#f6c746", "#8d5297"],
         colorIndex: 0,
         colorIncrementer: 0,
         colorThreshold: 10,
@@ -45,32 +45,28 @@
         this.tiltAngle = 0;
 
         this.draw = function (j) {
-          console.log(j);
             ctx.beginPath();
-            if( (j % 2) == 0){
-            ctx.lineWidth = this.r / 2;
-            ctx.strokeStyle = this.color;
-            ctx.moveTo(this.x + this.tilt + (this.r / 4), this.y);
-            ctx.lineTo(this.x + this.tilt, this.y + this.tilt + (this.r / 4));
-            return ctx.stroke();
-          }
-
-        else {
-            ctx.fillStyle = this.color;
-            ctx.moveTo(this.x + this.tilt + (this.r / 4), this.y );
-            ctx.lineTo(this.x + this.tilt , this.y + this.tilt );
-          ctx.lineTo(this.x + this.tilt + this.r , this.y + this.tilt + this.r );
-          return ctx.fill();
-
+            if (j%2==0) {
+              ctx.lineWidth = this.r / 2;
+              ctx.strokeStyle = this.color;
+              ctx.moveTo(this.x + this.tilt + (this.r / 4), this.y);
+              ctx.lineTo(this.x + this.tilt, this.y + this.tilt + (this.r / 4));
+              return ctx.stroke();
+            }
+            else {
+              ctx.fillStyle = this.color;
+              ctx.moveTo(this.x + this.tilt + (this.r / 4), this.y );
+              ctx.lineTo(this.x + this.tilt , this.y + this.tilt );
+            ctx.lineTo(this.x + this.tilt + this.r , this.y + this.tilt + this.r );
+            return ctx.fill();
             }
 
-          }
-      }
-
+        }
+    }
 
     $(document).ready(function () {
         SetGlobals();
-        InitializeButton();
+        //InitializeButton();
         InitializeConfetti();
 
         $(window).resize(function () {
@@ -80,14 +76,7 @@
             canvas.height = H;
         });
         window.setTimeout(DeactivateConfetti, 4000);
-
     });
-
-    // function InitializeButton() {
-    //     $('#stopButton').click(DeactivateConfetti);
-    //     //$('#startButton').click(RestartConfetti);
-    // }
-
     function SetGlobals() {
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
@@ -147,6 +136,7 @@
             }
             CheckForReposition(particle, i);
         }
+
         if (remainingFlakes === 0) {
             StopConfetti();
         }
@@ -202,25 +192,6 @@
         confettiActive = false;
         ClearTimers();
     }
-
-    function StopConfetti() {
-
-
-        animationComplete = true;
-        if (ctx == undefined) return;
-        ctx.clearRect(0, 0, W, H);
-    }
-
-    // function RestartConfetti() {
-    //     ClearTimers();
-    //     StopConfetti();
-    //     reactivationTimerHandler = setTimeout(function () {
-    //         confettiActive = true;
-    //         animationComplete = false;
-    //         InitializeConfetti();
-    //     }, 100);
-    //
-    // }
 
     window.requestAnimFrame = (function () {
         return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
