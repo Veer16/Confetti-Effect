@@ -1,20 +1,11 @@
 (function () {
-    // globals
-    var canvas;
-    var ctx;
-    var W;
-    var H;
+
+    var canvas, ctx, W, H, deactivationTimerHandler, reactivationTimerHandler, animationHandler;
     var mp = 300; //max particles
     var particles = [];
-    var angle = 0;
-    var tiltAngle = 0;
-    var confettiActive = true;
-    var animationComplete = true;
-    var deactivationTimerHandler;
-    var reactivationTimerHandler;
-    var animationHandler;
+    var angle = tiltAngle = 0;
+    var confettiActive = animationComplete = true;
 
-    // objects
 
     var particleColors = {
         colorOptions: ["#e06437", "#69b761", "#f6c746", "#8d5297"],
@@ -35,10 +26,10 @@
     }
 
     function confettiParticle(color) {
-        this.x = Math.random() * W; // x-coordinate
-        this.y = (Math.random() * H) - H; //y-coordinate
-        this.r = RandomFromTo(10, 10); //radius;
-        this.d = (Math.random() * mp) + 10; //density;
+        this.x = Math.random() * W;
+        this.y = (Math.random() * H) - H;
+        this.r = RandomFromTo(10, 10);
+        this.d = (Math.random() * mp) + 10;
         this.color = color;
         this.tilt = Math.floor(Math.random() * 10) - 10;
         this.tiltAngleIncremental = (Math.random() * 0.07) + .05;
@@ -66,7 +57,6 @@
 
     $(document).ready(function () {
         SetGlobals();
-        //InitializeButton();
         InitializeConfetti();
 
         $(window).resize(function () {
@@ -137,9 +127,9 @@
             CheckForReposition(particle, i);
         }
 
-        if (remainingFlakes === 0) {
-            StopConfetti();
-        }
+        // if (remainingFlakes === 0) {
+        //     StopConfetti();
+        // }
     }
 
     function CheckForReposition(particle, index) {
@@ -198,4 +188,7 @@
             return window.setTimeout(callback, 1000 / 60);
         };
     })();
+    function resize(){
+    canvas.outerHeight(window.height() - canvas.offset().top )
+    }
 })();
